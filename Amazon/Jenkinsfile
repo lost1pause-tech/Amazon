@@ -1,1 +1,32 @@
-// Added feature 1
+pipeline{
+  agent any
+
+  stages{
+    stages('clone project'){
+      steps{
+        git branch:'master',
+          url:''
+      }
+    }
+    stage ('clean'){
+      steps{
+        sh 'mvn clean'
+      }
+    }
+    stage ('complie'){
+      steps{
+        sh 'mvn complie'
+      }
+    }
+    stage('test'){
+      steps{
+        sh 'mvn test'
+      }
+    }
+    stage('build'){
+      steps{
+        sh 'mvn clean install'
+      }
+    }
+  }
+}// Added feature 1
